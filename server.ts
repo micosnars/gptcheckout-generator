@@ -27,6 +27,10 @@ async function startServer() {
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
+          '--disable-gpu',
+          '--disable-dev-shm-usage', 
+          '--no-zygote',             
+          '--single-process',        
           '--lang=id-ID,id'
         ]
       });
@@ -38,8 +42,10 @@ async function startServer() {
       });
       await page.emulateTimezone('Asia/Jakarta');
 
-      // Navigate to establish dynamic bot checks and cookies
-      await page.goto('https://chatgpt.com/', { waitUntil: 'networkidle2' });
+      await page.goto('https://chatgpt.com/', { 
+        waitUntil: 'domcontentloaded', // Lebih cepat daripada 'networkidle2'
+        timeout: 60000                 // Memberi waktu 60 detik (sebelumnya hanya 30 detik)
+      });
 
       // Execute API call directly inside browser context
       const checkoutData = await page.evaluate(async (token, acctId, plan) => {
