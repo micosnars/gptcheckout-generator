@@ -31,7 +31,9 @@ async function startServer() {
           '--disable-dev-shm-usage', 
           '--no-zygote',             
           '--single-process',        
-          '--lang=id-ID,id'
+          '--lang=id-ID,id',
+          // TAMBAHKAN BARIS INI UNTUK MENYAMARKAN LOKASI RENDER:
+          '--proxy-server=http://103.76.174.155:1080'
         ]
       });
 
