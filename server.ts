@@ -33,7 +33,7 @@ async function startServer() {
           '--single-process',        
           '--lang=id-ID,id',
           // TAMBAHKAN BARIS INI UNTUK MENYAMARKAN LOKASI RENDER:
-          '--proxy-server=http://103.76.174.155:1080'
+          '--proxy-server=http://103.68.215.46:8080'
         ]
       });
 
