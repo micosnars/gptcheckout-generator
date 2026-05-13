@@ -33,11 +33,22 @@ async function startServer() {
           '--single-process',        
           '--lang=id-ID,id',
           // TAMBAHKAN BARIS INI UNTUK MENYAMARKAN LOKASI RENDER:
-          '--proxy-server=http://103.68.215.46:8080'
+          '--proxy-server=http://193.5.64.151:50100'
         ]
       });
 
       const page = await browser.newPage();
+
+      // OTENTIKASI PROXY (SANGAT PENTING)
+      await page.authenticate({
+        username: 'TWNZmBax',
+        password: 'sR5ExHiTh3'
+      });
+
+      await page.setExtraHTTPHeaders({
+        'Accept-Language': 'id-ID,id;q=0.9'
+      });
+      await page.emulateTimezone('Asia/Jakarta');
       
       await page.setExtraHTTPHeaders({
         'Accept-Language': 'id-ID,id;q=0.9'
